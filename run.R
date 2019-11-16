@@ -13,3 +13,14 @@ library(wesanderson) #color palette
 
 #spatial data available from the "maps" package
 data(us.cities)
+# Commuter data prep
+cities <- commute_mode %>% 
+  separate(city, 
+           into= c("city_name", "city_descriptor"),
+           sep= " (?=city|village|town|borough|municipality|urban)",
+           extra= "merge") %>% 
+  mutate(
+    name = paste(city_name, state_abb)
+  ) %>% 
+  left_join(us.cities, by="name") %>% 
+  filter(capital ==2) # 2 = state capital
