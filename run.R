@@ -10,3 +10,6 @@ library(ggrepel)# makes lables and points not overlap
 library(ggspatial) # allowes usage of GIS layers from sf pkg in ggplot
 library(maps) # spatial data 
 library(wesanderson) #color palette
+
+#spatial data available from the "maps" package
+data(us.cities)
